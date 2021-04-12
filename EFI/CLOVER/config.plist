@@ -12,43 +12,41 @@
 			<false/>
 			<key>Fixes</key>
 			<dict>
-				<key>AddDTGP_0001</key>
+				<key>AddDTGP</key>
 				<true/>
-				<key>AddHDMI_8000000</key>
+				<key>AddHDMI</key>
 				<true/>
-				<key>AddIMEI_80000</key>
+				<key>AddIMEI</key>
 				<true/>
-				<key>DeleteUnused_400000</key>
+				<key>DeleteUnused</key>
 				<true/>
-				<key>FIX_ACST_4000000</key>
+				<key>FixACST</key>
 				<true/>
-				<key>FIX_ADP1_800000</key>
+				<key>FixADP1</key>
 				<true/>
-				<key>FIX_RTC_20000</key>
+				<key>FixAirport</key>
 				<true/>
-				<key>FIX_S3D_2000000</key>
+				<key>FixDisplay</key>
 				<true/>
-				<key>FixAirport_4000</key>
+				<key>FixFirewire</key>
 				<true/>
-				<key>FixDisplay_0100</key>
+				<key>FixHDA</key>
 				<true/>
-				<key>FixFirewire_0800</key>
+				<key>FixHPET</key>
 				<true/>
-				<key>FixHDA_8000</key>
+				<key>FixIPIC</key>
 				<true/>
-				<key>FixHPET_0010</key>
+				<key>FixLAN</key>
 				<true/>
-				<key>FixIPIC_0040</key>
+				<key>FixRTC</key>
 				<true/>
-				<key>FixLAN_2000</key>
+				<key>FixRegions</key>
 				<true/>
-				<key>FixRegions_10000000</key>
+				<key>FixS3D</key>
 				<true/>
-				<key>FixShutdown_0004</key>
+				<key>FixShutdown</key>
 				<true/>
-				<key>FixUSB_1000</key>
-				<true/>
-				<key>NewWay_80000000</key>
+				<key>FixUSB</key>
 				<true/>
 			</dict>
 			<key>Name</key>
@@ -84,7 +82,18 @@
 			<key>EnableC6</key>
 			<true/>
 			<key>Generate</key>
-			<true/>
+			<dict>
+				<key>APLF</key>
+				<true/>
+				<key>APSN</key>
+				<true/>
+				<key>CStates</key>
+				<true/>
+				<key>PStates</key>
+				<true/>
+				<key>PluginType</key>
+				<true/>
+			</dict>
 		</dict>
 	</dict>
 	<key>Boot</key>
@@ -96,7 +105,7 @@
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
-		<string>MacOSX</string>
+		<string>LastBootedVolume</string>
 		<key>Secure</key>
 		<false/>
 		<key>Timeout</key>
@@ -114,7 +123,7 @@
 		<key>Audio</key>
 		<dict>
 			<key>Inject</key>
-			<string>28</string>
+			<integer>28</integer>
 		</dict>
 		<key>FakeID</key>
 		<dict>
@@ -153,8 +162,8 @@
 	<dict>
 		<key>Hide</key>
 		<array>
-			<string>BOOTX64.EFI</string>
 			<string>Windows</string>
+			<string>BOOTX64.EFI</string>
 		</array>
 		<key>Language</key>
 		<string>en:0</string>
@@ -176,12 +185,18 @@
 	</dict>
 	<key>Graphics</key>
 	<dict>
-		<key>CustomEDID</key>
-		<data>
-		AP///////wBMowAC/////wAVAQOAHRD/LwAAoFdJmyYQSE8AAAABAQEBAQEB
-		AQEBAQEBAQEBnhtWeFAAGDAwICUAJaUQAAAZAAAA/QAAPADZCAAAAAAAAAAA
-		AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMw=
-		</data>
+		<key>EDID</key>
+		<dict>
+			<key>Custom</key>
+			<data>
+			AP///////wAGEHycAAAAAAoWAQOAAAD/LwAAoFdJmyYQSE8AAAAB
+			AQEBAQEBAQEBAQEBAQEBnhtWeFAAGDAwICUAJaUQAAAZAAAA/ABO
+			b3RlYm9va1BhbmVsAAAA/QA8PS8wCAEAAAAAAAAAAAAAEAAAAAAA
+			AAAAAAAAAAAAAKw=
+			</data>
+			<key>Inject</key>
+			<true/>
+		</dict>
 		<key>Inject</key>
 		<dict>
 			<key>ATI</key>
@@ -191,8 +206,6 @@
 			<key>NVidia</key>
 			<false/>
 		</dict>
-		<key>InjectEDID</key>
-		<true/>
 		<key>NvidiaSingle</key>
 		<false/>
 		<key>ig-platform-id</key>
@@ -200,15 +213,13 @@
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>
-		<key>AppleRTC</key>
+		<key>AppleIntelCPUPM</key>
 		<true/>
-		<key>AsusAICPUPM</key>
+		<key>AppleRTC</key>
 		<true/>
 		<key>Debug</key>
 		<false/>
 		<key>KernelCpu</key>
-		<false/>
-		<key>KernelHaswellE</key>
 		<false/>
 		<key>KernelLapic</key>
 		<false/>
@@ -225,6 +236,8 @@
 				<data>
 				RXh0ZXJuYWw=
 				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
 				<key>Name</key>
 				<string>AppleAHCIPort</string>
 				<key>Replace</key>
@@ -232,44 +245,102 @@
 				SW50ZXJuYWw=
 				</data>
 			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>change F%uT%04x to F%uTxxxx for AppleBacklightInjector.kext (credit RehabMan)</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				RiV1VCUwNHgA
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>Name</key>
+				<string>com.apple.driver.AppleBacklight</string>
+				<key>Replace</key>
+				<data>
+				RiV1VHh4eHgA
+				</data>
+			</dict>
 		</array>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
 		<key>BiosReleaseDate</key>
-		<string>05/10/12</string>
+		<string>12/19/2018</string>
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>MBA51.88Z.00EF.B00.1205221442</string>
+		<string>MBP91.88Z.F000.B00.1812191334</string>
 		<key>Board-ID</key>
-		<string>Mac-2E6FAB96566FE58C</string>
+		<string>Mac-6F01561E16C75D06</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>CK203N4SDRVCA1C3E</string>
+		<string>C023444054NF1YJUE</string>
 		<key>BoardType</key>
 		<integer>10</integer>
+		<key>BoardVersion</key>
+		<string>1.0</string>
 		<key>ChassisAssetTag</key>
-		<string>Air-Enclosure</string>
+		<string>MacBook-Aluminum</string>
 		<key>ChassisManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>ChassisType</key>
-		<string>10</string>
+		<string>0x0A</string>
+		<key>EfiVersion</key>
+		<string>223.0.0.0.0</string>
 		<key>Family</key>
-		<string>MacBook Air</string>
+		<string>MacBook Pro</string>
+		<key>FirmwareFeatures</key>
+		<string>0xC00DE137</string>
+		<key>FirmwareFeaturesMask</key>
+		<string>0xFF1FFF3F</string>
+		<key>LocationInChassis</key>
+		<string>Part Component</string>
 		<key>Manufacturer</key>
 		<string>Apple Inc.</string>
+		<key>Memory</key>
+		<dict>
+			<key>Modules</key>
+			<array>
+				<dict>
+					<key>Frequency</key>
+					<integer>1600</integer>
+					<key>Size</key>
+					<integer>4096</integer>
+					<key>Slot</key>
+					<integer>0</integer>
+					<key>Type</key>
+					<string>DDR3</string>
+					<key>Vendor</key>
+					<string>Samsung</string>
+				</dict>
+				<dict>
+					<key>Frequency</key>
+					<integer>1600</integer>
+					<key>Size</key>
+					<integer>2048</integer>
+					<key>Slot</key>
+					<integer>1</integer>
+					<key>Type</key>
+					<string>DDR3</string>
+					<key>Vendor</key>
+					<string>Samsung</string>
+				</dict>
+			</array>
+		</dict>
 		<key>Mobile</key>
 		<true/>
+		<key>PlatformFeature</key>
+		<string>0xFFFF</string>
 		<key>ProductName</key>
-		<string>MacBookAir5,2</string>
+		<string>MacBookPro9,2</string>
 		<key>SerialNumber</key>
-		<string>CK203N4SDRVC</string>
+		<string>C02LM0D3DTY3</string>
 		<key>SmUUID</key>
-		<string>0B227588-3DFC-4007-91E3-11D79866DCCF</string>
-		<key>Trust</key>
-		<false/>
+		<string>C9D49F9D-501A-4FDC-B953-50A900938300</string>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
